@@ -1,19 +1,45 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project</title>
-</head>
-<body>
+@extends('layouts.master')
 
-<h1>{{ $project->title }}</h1>
-<p>
-    {{ $project->description }}
-</p>
+@section('content')
 
 
+       <div class="lg:flex flex-wrap">
+           <div class="lg:w-3/4 px-3 py-3">
 
-</body>
-</html>
+               <div class="bg-white rounded-lg shadow-lg p-6 hover:bg-gray-200 my-3">
+                   <h1 class="text-md mb-1 -ml-6 border-l-4 border-blue-700 pl-4 py-2">
+                       Task 1
+                   </h1>
+               </div>
+               <div class="bg-white rounded-lg shadow-lg p-6 hover:bg-gray-200 my-3">
+                   <h1 class="text-md mb-1 -ml-6 border-l-4 border-blue-700 pl-4 py-2">
+                       Task 1
+                   </h1>
+               </div>
+               <div class="bg-white rounded-lg shadow-lg p-6 hover:bg-gray-200 my-3">
+                   <h1 class="text-md mb-1 -ml-6 border-l-4 border-blue-700 pl-4 py-2">
+                       Task 1
+                   </h1>
+               </div>
+               <div class="bg-white rounded-lg shadow-lg p-6 hover:bg-gray-200 my-3">
+                   <h1 class="text-md mb-1 -ml-6 border-l-4 border-blue-700 pl-4 py-2">
+                       Task 1
+                   </h1>
+               </div>
+               <h2 class="text-lg text-gray-600 mt-5 ml-1">Notes</h2>
+
+               <div class="bg-white rounded-lg shadow-lg p-6 hover:bg-gray-200 my-3">
+                   Must be done ASAP !
+               </div>
+
+
+
+           </div>
+
+           <div class="lg:w-1/4 px-3 py-6">
+               @include('projects.card')
+           </div>
+       </div>
+
+
+@endsection

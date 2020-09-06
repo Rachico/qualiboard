@@ -1,23 +1,37 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Projects</title>
-</head>
-<body>
+@extends('layouts.master')
 
-@forelse($projects as $project)
-    <li>
-        <a href="{{ $project->path() }}">
-            {{ $project->title }}
-        </a>
-    </li>
+@section('content')
 
-@empty
-    <li>No projects yet.</li>
-@endforelse
+    <header class="flex items-center mb-1 py-4 mx-4">
+        <div class="flex justify-between items-end w-full">
+            <p class="text-gray-500 text-lg font-normal">
+                Projets
+            </p>
 
-</body>
-</html>
+            <a href="/projects/create"
+               class="bg-blue-700 px-2 py-2 text-white round"
+            >
+                Nouveau Projet
+            </a>
+        </div>
+    </header>
+
+    <div class="flex flex-wrap">
+        @forelse($projects as $project)
+            <div class="w-full md:w-1/2 xl:w-1/4 p-3">
+
+                @include('projects.card')
+
+            </div>
+        @empty
+            <p>No projects yet.</p>
+        @endforelse
+    </div>
+
+
+
+@endsection
+
+
+
+
