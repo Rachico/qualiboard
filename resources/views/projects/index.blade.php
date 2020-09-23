@@ -9,7 +9,7 @@
             </p>
 
             <a href="/projects/create"
-               class="bg-blue-700 px-2 py-2 text-white round"
+               class="bg-blue-700 px-3 py-2 text-white rounded text-sm"
             >
                 Nouveau Projet
             </a>
