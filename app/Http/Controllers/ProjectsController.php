@@ -19,6 +19,7 @@ class ProjectsController extends Controller
         $attributes = request()->validate([
             'title'=>'required',
             'description'=>'required',
+            'notes' => 'min:2|max:255',
         ]);
 
 
@@ -42,5 +43,16 @@ class ProjectsController extends Controller
     public function create()
     {
         return view('projects.create');
+    }
+
+    public function update(Project $project)
+    {
+        $this->authorize('update',$project);
+
+        $project->update(request(['notes']));
+
+
+        return redirect($project->path());
+
     }
 }

@@ -4,13 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Task;
+use App\User;
 
 class Project extends Model
 {
     protected $fillable = [
         'title',
         'description',
-        'owner_id'
+        'owner_id',
+        'notes',
     ];
 
     public function path()
