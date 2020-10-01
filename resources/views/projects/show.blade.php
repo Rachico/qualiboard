@@ -2,7 +2,19 @@
 
 @section('content')
 
-    <h2 class="text-lg text-gray-600 mt-5 ml-3 mb-0">Tâches</h2>
+    <header class="flex items-center mb-0 py-4 mx-4">
+        <div class="flex justify-between items-end w-full">
+            <p class="text-gray-600 text-lg font-normal">
+                Tâches
+            </p>
+
+            <a href="{{ $project->path() . '/edit' }}"
+               class="bg-blue-700 px-3 py-2 text-white rounded text-sm"
+            >
+                Modifier le projet
+            </a>
+        </div>
+    </header>
        <div class="lg:flex flex-wrap align-items-center">
 
            <div class="lg:w-3/4 px-3 py-3">
@@ -49,7 +61,7 @@
            </div>
 
            <div class="lg:w-1/4 px-3 py-6">
-               @include('projects.card')
+               @include('projects._card')
            </div>
        </div>
 

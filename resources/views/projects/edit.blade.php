@@ -1,12 +1,14 @@
+
 @extends('layouts.master')
 
 @section('content')
     <div class="flex">
 
         <div class="w-full flex-1 ml-4 mr-4">
-            <h1 class="font-bold text-2xl mb-4 mt-4">Nouveau Projet</h1>
-            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="/projects">
+            <h1 class="font-bold text-2xl mb-4 mt-4">Modifer mon projet</h1>
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ $project->path() }}">
                 @csrf
+                @method('PATCH')
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
                         Nom
@@ -16,7 +18,9 @@
                         type="text"
                         name="title"
                         placeholder="Nom du projet"
-                        required
+                        value="{{$project->title}}"
+                        requiredmana
+
                     >
                 </div>
                 <div class="mb-6">
@@ -29,18 +33,27 @@
                         name="description"
                         placeholder="Description du projet"
                         required
-                    ></textarea>
+
+                    >{{$project->description}}</textarea>
 
                 </div>
                 <div class="flex items-center justify-between">
                     <button
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="submit"
-                    >Créer</button>
-                    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/projects">
+                    >Enregistrer</button>
+                    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="{{ $project->path()}}">
                         Annuler
                     </a>
                 </div>
+                @if($errors->any())
+                    <div class="mt-4">
+                        @foreach($errors->all() as $error)
+                            <h6 class="text-sm text-red-700">{{ $error }}</h6>
+                        @endforeach
+                    </div>
+                @endif
+
             </form>
 
         </div>

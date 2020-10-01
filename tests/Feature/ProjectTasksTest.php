@@ -5,34 +5,33 @@ namespace Tests\Feature;
 use App\Project;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Facades\Tests\Setup\ProjectFactory;
 use Tests\TestCase;
 
 class ProjectTasksTest extends TestCase
 {
     use RefreshDatabase;
 
+
     /** @test */
     public function a_project_can_have_tasks()
     {
 
-        $this->signIn();
+        $project = ProjectFactory::ownedBy($this->signIn())->create();
 
-       $project = factory(Project::class)->create(['owner_id'=>auth()->user()->id]);
 
-       $this->post($project->path() . '/tasks', ['body'=>'Test Task']);
+        $this->post($project->path() . '/tasks', ['body'=>'Test Task']);
 
-       $this->get($project->path())
+        $this->get($project->path())
            ->assertSee('Test Task');
-
-
     }
 
     /** @test */
     public function a_task_requires_a_body()
     {
-        $this->signIn();
 
-        $project = factory(Project::class)->create(['owner_id'=>auth()->user()->id]);
+        $project = ProjectFactory::ownedBy($this->signIn())->create();
 
         $attributes = factory('App\Task')->raw(['body' => '']);
 
@@ -58,11 +57,9 @@ class ProjectTasksTest extends TestCase
     {
         $this->signIn();
 
-        $project = factory(Project::class)->create();
+        $project = ProjectFactory::withTasks(1)->create();
 
-        $task = $project->addTask('test task');
-
-        $this->patch($task->path() ,['body'=>'changed'])
+        $this->patch($project->tasks[0]->path() ,['body'=>'changed'])
             ->assertStatus(403);
 
         $this->assertDatabaseMissing('tasks',['body','changed']);
@@ -73,14 +70,11 @@ class ProjectTasksTest extends TestCase
     /** @test */
     public function a_task_can_be_updated()
     {
-        $this->withoutExceptionHandling();
-        $this->signIn();
-
-        $project = factory(Project::class)->create(['owner_id'=>auth()->user()->id]);
+        $project = ProjectFactory::ownedBy($this->signIn())->withTasks(1)->create();
 
         $task = $project->addTask('test task');
 
-        $this->patch($project->path()  . '/tasks/' . $task->id,[
+        $this->patch($project->tasks->first()->path(),[
             'body'=>'changed',
             'completed' => true,
         ]);

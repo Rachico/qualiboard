@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+@font-face {
+    font-family: "Graphik Bold";
+    src: url("/css/fonts/GraphikBold.otf");
+}
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -417,7 +422,7 @@ ul {
  */
 
 html {
-  font-family: "Raleway","Fira Code Light",Nunito,Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; /* 1 */
+  font-family: "Graphik Bold","Raleway","Fira Code Light",Nunito,Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; /* 1 */
   line-height: 1.5; /* 2 */
 }
 

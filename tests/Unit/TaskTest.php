@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Project;
 use App\Task;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -11,6 +12,7 @@ class TaskTest extends TestCase
 {
 
     use RefreshDatabase;
+
 
     /** @test */
     public function it_belongs_to_a_project()

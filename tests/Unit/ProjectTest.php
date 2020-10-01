@@ -3,12 +3,14 @@
 namespace Tests\Unit;
 
 use App\Project;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProjectTest extends TestCase
 {
     use RefreshDatabase ;
+    use WithoutMiddleware;
 
     /** @test */
     public function it_has_a_path()
