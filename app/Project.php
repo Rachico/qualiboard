@@ -2,10 +2,11 @@
 
 namespace App;
 
+use App\Activity;
 use Illuminate\Database\Eloquent\Model;
 use App\Task;
 use App\User;
-use App\Activity;
+
 
 class Project extends Model
 {
@@ -38,7 +39,12 @@ class Project extends Model
 
     public function activity()
     {
-        return $this->hasMany(Activity::class);
+        return $this->hasMany(Activity::class)->latest();
+    }
+
+    public function recordActivity($description)
+    {
+        $this->activity()->create(compact('description'));
     }
 
 }

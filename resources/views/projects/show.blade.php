@@ -36,7 +36,12 @@
                     <div class="bg-white rounded-lg shadow-lg p-6 hover:bg-gray-200 my-3">
                         <form action="{{ $project->path() . '/tasks' }}" method="POST">
                             @csrf
-                            <input type="text" name="body" placeholder="Ajouter une tâche à ce projet..." class="w-full">
+                            <input
+                                type="text"
+                                name="body"
+                                placeholder="Ajouter une tâche à ce projet..."
+                                class="w-full"
+                            >
                         </form>
 
                     </div>
@@ -62,6 +67,15 @@
 
            <div class="lg:w-1/4 px-3 py-6">
                @include('projects._card')
+
+               <div class="bg-white rounded-lg shadow-lg p-6 hover:bg-gray-200 mt-3 text-xs">
+                   <ul>
+                       @foreach($project->activity as $activity)
+                           <li class="{{ $loop->last ? '' : 'mb-1' }}">{{ $activity->description }}</li>
+                       @endforeach
+                   </ul>
+
+               </div>
            </div>
        </div>
 

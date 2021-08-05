@@ -1,4 +1,4 @@
-<div class="bg-white rounded-lg shadow-lg p-6 hover:bg-gray-200" style="height: 200px">
+<div class="bg-white rounded-lg shadow-lg p-6 hover:bg-gray-200" style="height: 196px">
 
     <h1 class="text-xl mb-6 -ml-6 border-l-4 border-blue-700 pl-4 py-3">
         <a href="{{ $project->path() }}">
