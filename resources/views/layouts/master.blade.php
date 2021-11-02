@@ -29,7 +29,7 @@
                     <i class="" aria-role="presentation" aria-label="WHALE"></i>
                 </span>
                 <span class="uppercase ml-1">
-                    MBA Workspace
+                Qualiboard
                 </span>
             </a>
         </div>
